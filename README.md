@@ -1,8 +1,8 @@
 # My nvim installation, configuration and comments about it
 
-This is basically a copy of one of the Christian Chiarulli's (Chris@machine)
-configuration with a few variations. The idea is keep it simple, use the
-christian's structure with which i feel comfortable and adapt it for my use.
+This configuration is heavily inspired on the Christian Chiarulli's (Chris@machine)
+configuration. This is a structure with I feel comfortable, it is simple and modular 
+enough to adapt it to my own use.
 
 ### Download and install nvim
 Download the last neovim release (neovim 0.10 at the current date 26/09/24)
