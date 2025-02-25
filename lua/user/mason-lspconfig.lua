@@ -13,6 +13,7 @@ function M.config()
     "bashls",
     "clangd",
     "pyright",
+    -- "matlab_ls",
   }
 
   require("mason").setup {

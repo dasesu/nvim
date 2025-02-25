@@ -3,7 +3,6 @@ require("user.options")
 require("user.keymaps")
 require("user.autocmds")
 
-
 -- Theme for neovim
 spec("user.colorscheme")
 
@@ -21,7 +20,7 @@ spec("user.treesitter")
 -- for SimulateTypiping
 -- eg: SimulateTyping <path> [speed]
 -- eg: SimulateTypingWithPauses <path> [speed]
-spec("user.extras.typeit")
+-- spec("user.extras.typeit")
 
 -- For create hint of keymaps and shortcuts
 spec("user.whichkey")
@@ -29,6 +28,7 @@ spec("user.whichkey")
 -- An easy way to interact with LSP language servers
 -- for language syntax highlighting and format management
 spec("user.mason-lspconfig")
+
 -- The language server protocol
 -- for a better coding experience
 spec("user.lspconfig")
@@ -52,8 +52,10 @@ spec("user.nvimtree")
 -- for easy toggle code comment's
 spec("user.comment")
 
+
 -- Enable to set the status line
 spec("user.lualine")
+
 
 -- Simple winbar/statusline plugin
 -- that shows your current code context

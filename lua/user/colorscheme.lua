@@ -7,10 +7,6 @@ local M = {
       "folke/tokyonight.nvim",
       lazy = true,
     },
-    {
-      "loctvl842/monokai-pro.nvim",
-      lazy = true,
-    }
   },
 }
 

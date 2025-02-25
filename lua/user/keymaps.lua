@@ -6,6 +6,14 @@
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- map: Si la accion asignada tiene un mapeo se efectua de forma recursiva tambien.
+
+-- nmap:  Si la accion asignada tiene un mapeo se efectua de forma recursiva
+-- tambien pero solo en modo normal, no en visual ni insert.
+
+-- noremap: no actua de modo recursivo
+-- nnoremap: no actua de modo recursivo en modo normal
+
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -73,7 +81,7 @@ keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
 -- keymap('n', '<Leader>nr', ':set rnu<CR>', opts)
 -- keymap('n', '<Leader>nn', ':set nornu<CR>', opts)
 
--- Edit Snippets
+-- Edit Snippets [CHOCA CON OIL]
 keymap("n", "-", ":lua require('luasnip.loaders').edit_snippet_files()<cr>", opts)
 
 -- Colorizer

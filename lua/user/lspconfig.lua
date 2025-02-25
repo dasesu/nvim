@@ -46,7 +46,7 @@ function M.config()
     },
     {
       "<leader>lr",
-      "<cmd>lua vim.lsp.buf.rename()<cr>", 
+      "<cmd>lua vim.lsp.buf.rename()<cr>",
       desc = " Rename"
     },
     {
@@ -56,13 +56,13 @@ function M.config()
     },
     {
       "lj",
-      "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+      "<cmd>lua vivm.diagnostic.goto_prev()<cr>",
       desc = " Prev Diagnostic"
     },
-    { 
+    {
       "lk",
       "<cmd>lua vim.diagnostic.goto_next()<cr>",
-      desc = " Next Diagnostic" 
+      desc = " Next Diagnostic"
     },
   }
 
@@ -76,6 +76,7 @@ function M.config()
     "bashls",
     "clangd",
     "pyright",
+    -- "matlab_ls",
   }
 
   local default_diagnostic_config = {

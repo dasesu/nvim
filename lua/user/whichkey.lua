@@ -8,15 +8,15 @@ function M.config()
 
   which_key.setup {
     ---@type false | "classic" | "modern" | "helix"
-    preset = "modern",
+    preset = "classic",
     -- Delay before showing the popup. Can be a number or a function that returns a number.
     ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
-    delay = 550,
+    delay = 500,
     ---@param mapping wk.Mapping
     filter = function(mapping)
       -- example to exclude mappings without a description
-      -- return true
-      return mapping.desc and mapping.desc ~= ""
+      return true
+      -- return mapping.desc and mapping.desc ~= ""
     end,
 
     --- You can add any mappings here, or use `require('which-key').add()` later
