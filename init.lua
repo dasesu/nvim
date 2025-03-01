@@ -3,6 +3,8 @@ require("user.options")
 require("user.keymaps")
 require("user.autocmds")
 
+-- vim.cmd('echo "(>^.^<)"')
+
 -- Theme for neovim
 spec("user.colorscheme")
 
@@ -16,11 +18,6 @@ spec("user.extras.transparent")
 -- used to implement functionalities,
 -- like syntax, highlighting
 spec("user.treesitter")
-
--- for SimulateTypiping
--- eg: SimulateTyping <path> [speed]
--- eg: SimulateTypingWithPauses <path> [speed]
--- spec("user.extras.typeit")
 
 -- For create hint of keymaps and shortcuts
 spec("user.whichkey")
@@ -52,10 +49,11 @@ spec("user.nvimtree")
 -- for easy toggle code comment's
 spec("user.comment")
 
+-- Enable to set the status line
+spec("user.extras.copilot")
 
 -- Enable to set the status line
 spec("user.lualine")
-
 
 -- Simple winbar/statusline plugin
 -- that shows your current code context
@@ -76,7 +74,7 @@ spec("user.harpoon")
 spec("user.extras.oil")
 
 -- For easy folding sections of text
-spec("user.ufo")
+spec("user.extras.ufo")
 
 -- A powerful autopair plugin that
 -- supports multiple characters.
@@ -113,5 +111,10 @@ spec("user.extras.zen")
 -- notes, task tracking and easy deep
 -- linking across files or git commits.
 -- spec("user.extras.note")
+
+-- for SimulateTypiping
+-- eg: SimulateTyping <path> [speed]
+-- eg: SimulateTypingWithPauses <path> [speed]
+-- spec("user.extras.typeit")
 
 require("user.lazy")

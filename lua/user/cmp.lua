@@ -39,11 +39,11 @@ function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
   require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/user/snippets/friendly-snippets/" } })
-  require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/user/snippets/snippets/" } })
+  -- require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/user/snippets/snippets/" } })
 
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 
-    local check_backspace = function()
+  local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
   end
@@ -57,37 +57,41 @@ function M.config()
       end,
     },
     mapping = cmp.mapping.preset.insert {
-   -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-   -- ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-   -- ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-   -- ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-   -- ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-   -- ["<C-e>"] = cmp.mapping {
-   --   i = cmp.mapping.abort(),
-   --   c = cmp.mapping.close(),
-   -- },
-      ["<Up>"] =  cmp.mapping {
+      -- ["<Up>"] =  cmp.mapping {
+      --   i = cmp.mapping.abort(),
+      --   c = cmp.mapping.close(),
+      -- },
+
+      -- ["<Down>"] =  cmp.mapping {
+      --   i = cmp.mapping.abort(),
+      --   c = cmp.mapping.close(),
+      -- },
+
+      -- ["<Home>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      -- ["<End>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      -- ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+      -- ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+
+      ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+
+      ["<Left>"] = cmp.mapping {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-      ["<Down>"] =  cmp.mapping {
+
+      ["<Right>"] = cmp.mapping {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-      ["<Left>"] =  cmp.mapping {
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      },
-      ["<Right>"] =  cmp.mapping {
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      },
---      ["<Home>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
---      ["<End>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
+
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -104,6 +108,7 @@ function M.config()
         "i",
         "s",
       }),
+
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()

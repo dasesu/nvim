@@ -10,7 +10,7 @@ function M.config()
       max_width = 75,
     },
   }
-  vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Oil File explorer" })
+  vim.keymap.set("n", "<leader>-", "<CMD>Oil --float<CR>", { desc = "Oil File explorer" })
 end
 
 return M

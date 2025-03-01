@@ -1,7 +1,9 @@
 local M = {
   "folke/which-key.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  lazy = true,
 }
+
 
 function M.config()
   local which_key = require("which-key")
@@ -11,12 +13,12 @@ function M.config()
     preset = "classic",
     -- Delay before showing the popup. Can be a number or a function that returns a number.
     ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
-    delay = 500,
+    delay = 550,
     ---@param mapping wk.Mapping
     filter = function(mapping)
       -- example to exclude mappings without a description
-      return true
-      -- return mapping.desc and mapping.desc ~= ""
+      return mapping.desc and mapping.desc ~= ""
+      -- return true
     end,
 
     --- You can add any mappings here, or use `require('which-key').add()` later
@@ -131,7 +133,7 @@ function M.config()
   -- azure, grey, cyan, green, grey, orange, purple, red, yellow
   wk.add {
     {
-      "<leader>f",
+      "<leader>t",
       group = " Telescope",
       icon = {
         icon = "",
@@ -168,22 +170,12 @@ function M.config()
         color = "grey",
       },
     },
-    {
-      "<leader>c",
-      "<cmd>ColorizerToggle<CR>",
-      desc = " ColorizerToggle",
-      icon = {
-        icon = " ",
-        color = "grey",
-      },
-    },
-    {
-      "<leader>w",
-      "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",
-      desc = "Wrap",
-      hidden = true,
-    },
-
+    -- {
+    --   "<leader>w",
+    --   "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",
+    --   desc = "Wrap",
+    --   hidden = true,
+    -- },
     {
       "<leader>p",
       group = "Plugins",

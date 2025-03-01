@@ -40,11 +40,6 @@ function M.config()
     --   },
     -- },
     {
-      "<leader>li",
-      "<cmd>LspInfo<cr>",
-      desc = " Info"
-    },
-    {
       "<leader>lr",
       "<cmd>lua vim.lsp.buf.rename()<cr>",
       desc = " Rename"
@@ -70,12 +65,13 @@ function M.config()
   local icons = require "user.icons"
 
   local servers = {
-    "lua_ls",
-    "html",
-    "cssls",
-    "bashls",
-    "clangd",
-    "pyright",
+    "lua_ls",    -- lua
+    "html",      -- html
+    "cssls",     -- css
+    "bashls",    -- bash 
+    "clangd",    -- cpp 
+    "pyright",   -- python
+    "eslint",    -- javascript, typescript
     -- "matlab_ls",
   }
 

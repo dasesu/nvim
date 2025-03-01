@@ -14,7 +14,6 @@ local M = {
 }
 
 function M.config()
-
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
   -- word suggets with telescope
@@ -30,20 +29,19 @@ function M.config()
     --     color = "azure",
     --   },
     -- },
-    { "<leader>fb", "<cmd>Telescope buffers previewer=false<cr>", desc = " Buffers" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files",
+    { "<leader>tx", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>tc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    { "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Find files",
       icon = {
         icon = "󰈞",
         color = "azure",
       },
     },
-    -- { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fj", "<cmd>Telescope jumplist previewer=false<cr>", desc = "Jumps" },
-    { "<leader>fg", "<cmd>Telescope registers<cr>", desc = "Registers" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-    { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
+    -- { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>tj", "<cmd>Telescope jumplist previewer=false<cr>", desc = "Jumps" },
+    { "<leader>tl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>tr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>tt", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
   }
 
   local icons = require("user.icons")
@@ -99,21 +97,19 @@ function M.config()
         theme = "dropdown",
         previewer = false,
       },
-
       buffers = {
         theme = "dropdown",
         previewer = false,
-        initial_mode = "normal",
-        mappings = {
-          i = {
-            ["<C-d>"] = actions.delete_buffer,
-          },
-          n = {
-            ["dd"] = actions.delete_buffer,
-          },
-        },
+        -- initial_mode = "normal",
+        -- mappings = {
+        --   i = {
+        --     ["<C-d>"] = actions.delete_buffer,
+        --   },
+        --   n = {
+        --     ["dd"] = actions.delete_buffer,
+        --   },
+        -- },
       },
-
       planets = {
         show_pluto = true,
         show_moon = true,
@@ -145,10 +141,10 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true, -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
     },
   })

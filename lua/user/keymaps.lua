@@ -73,7 +73,7 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- for forcing the ts=2 and sw=2
-keymap("n", "sw", ":set ts=2<CR>:set sw=2<CR>", opts)
+-- keymap("n", "sw", ":set ts=2<CR>:set sw=2<CR>", opts)
 
 -- no hilight search
 keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
