@@ -21,12 +21,11 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
+
 -- set spell check for spanish
 keymap("n", "<leader>s", ":setlocal spell spelllang=es<CR>", opts )
 keymap("n", "<leader>so", ":set nospell<CR>", opts)
 
--- word suggets with telescope
--- keymap("n", "z-", ":Telescope spell_suggest<CR>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":horizontal resize -2<CR>", opts)
@@ -92,7 +91,7 @@ keymap('n', '<Leader>c', ':ColorizerToggle<CR>', opts)
 
 
 -- sessions
--- map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
--- keymap('n', '<F2>', ':mksession! ~/vim_session/vim_session  <cr>', opts)
--- keymap('n', '<F3>', ':source ~/vim_session/vim_session  <cr>', opts)
+--map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
+keymap('n', '<F2>', ':mksession! ~/vim_session/vim_session  <cr>', opts)
+keymap('n', '<F3>', ':source ~/vim_session/vim_session  <cr>', opts)
 

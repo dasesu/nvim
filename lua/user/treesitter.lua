@@ -8,7 +8,7 @@ function M.config()
   require("nvim-treesitter.configs").setup {
 
     -- :TSUpdate for update installed languages
-   -- :TSUpdate {language}
+    -- :TSUpdate {language}
 
     -- If the language is already supported by nvim-treesitter, you can install it with
     -- :TSInstall <language_to_install>

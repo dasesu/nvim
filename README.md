@@ -68,55 +68,58 @@ Edit the file `~/.config/nvim/lua/user/options.lua, with the next app options
 ```lua
 local options = {
   --vim.opt.syntax = "enable"
-  backup = false, -- creates a backup file
-  clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-  cmdheight = 0, -- more space in the neovim command line for displaying messages. originally 1.
-  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-  conceallevel = 0, -- so that ``` is visible in markdown files
-  -- fileencoding = "utf-8", -- the encoding written to a file
-  hlsearch = true, -- highlight all matches on previous search pattern
-  ignorecase = false, -- ignore case in search patterns
-  foldcolumn = "1", -- controla espacio de margen izquierdo
+  backup = false,               -- creates a backup file
+  clipboard = "unnamedplus",    -- allows neovim to access the system clipboard
+  cmdheight = 1,                -- more space in the neovim command line for displaying messages. originally 1.
+  completeopt = { "menuone", "noselect" }, -- A comma-separated list of options for Insert mode completion
+                                -- mostly just for cmp, :help completeopt
+  conceallevel = 0,             -- (cont) so that ``` is visible in markdown files
+  -- fileencoding = "utf-8",    -- the encoding written to a file
+  hlsearch = true,              -- highlight all matches on previous search pattern
+  ignorecase = false,           -- ignore case in search patterns
+  foldcolumn = "1",             -- controla espacio de margen izquierdo
   colorcolumn = "80",
-  mouse = "a", -- allow the mouse to be used in neovim
-  ruler = true, -- crea el separador entre diferentes archivos abiertos con split
-  pumheight = 10, -- pop up menu height
-  pumblend = 10,
-  showmode = false, -- show/hide the current mode, things like -- INSERT, VISUAL
-  -- tabstop = 3  overwrited by softtabstop
+  mouse = "a",                  -- allow the mouse to be used in neovim
+  ruler = true,                 -- crea el separador entre diferentes archivos abiertos con split
+  pumheight = 12,               -- pop up menu height
+  pumblend = 8,
+  showmode = true,              -- show/hide the current mode, things like -- INSERT, VISUAL
+  tabstop = 2,                  --  overwrited by softtabstop
   -- display the width of tab as 3 spaces but the tab char remain as a tab
   -- (cont) in other programas the tab is displayed as usual
   -- (cont) for example 8 "spaces".
-  softtabstop = 2,
-  expandtab = true, -- convert tabs to spaces
-  shiftwidth = 2, -- governs indentation via >> and friends.
+  -- softtabstop = 2,
+  shiftwidth = 2,               -- governs indentation via >> and friends.
+  expandtab = true,             -- convert tabs into spaces
   -- change tab into spaces and affect the backspace character too
-  showtabline = 1, -- always show tabs
-  smartcase = true, -- smart case
-  smartindent = true, -- reacts to the syntax/style of the code you are editing (especially for C)
-  smarttab = true, -- Makes tabbing smarter will realize you have 2 vs 4
-  splitbelow = true, -- force all horizontal splits to go below current window
-  -- autoindent = true, -- essentially tells vim to apply the indentation of the current line
-  splitright = true, -- force all vertical splits to go to the right of current window
-  swapfile = false, -- creates a swapfile
-  showmatch = true, -- nos muestra donde terminan parentesis
-  hidden = false, -- Requered to keep multiple buffers open
-  termguicolors = true, -- set term gui colors (most terminals support this)
-  undofile = true, -- enable persistent undo
-  writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-  --cursorline = true, -- highlight the current line
-  number = true, -- set numbered lines
-  -- relativenumber = true, -- set relative numbered lines
+  showtabline = 1,              -- always show tabs
+  smartcase = true,             -- smart case
+  smartindent = true,           -- reacts to the syntax/style of the code you are editing (especially for C)
+  smarttab = true,              -- Makes tabbing smarter will realize you have 2 vs 4
+  splitbelow = true,            -- force all horizontal splits to go below current window
+  splitright = true,            -- force all vertical splits to go to the right of current window
+  -- autoindent = true,         -- essentially tells vim to apply the indentation of the current line
+  swapfile = false,             -- creates a swapfile
+  showmatch = true,             -- nos muestra donde terminan parentesis
+  hidden = false,               -- Requered to keep multiple buffers open
+  termguicolors = true,         -- set term gui colors (most terminals support this)
+  undofile = true,              -- enable persistent undo
+  writebackup =   false,        -- if a file is being edited by another program 
+                                -- (cont) (or was written to file while editing with another program),
+                                -- (cont) it is not allowed to be edited
+  --cursorline = true,          -- highlight the current line
+  number = true,                -- set numbered lines
+  -- relativenumber = true,     -- set relative numbered lines
   laststatus = 3,
   showcmd = false,
-  numberwidth = 4, -- set number column width to 2 {default 4}
-  signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  updatetime = 300, -- faster completition
-  timeoutlen = 700, -- this is set by default in 1000
-  wrap = true, -- display lines as one long line
+  numberwidth = 4,              -- set number column width {default 4}
+  signcolumn = "yes",           -- always show the sign column, otherwise it would shift the text each time
+  updatetime = 300,             -- faster completition
+  timeoutlen = 700,             -- this is set by default in 1000
+  wrap = true,                  -- display lines as one long line
   scrolloff = 0,
   sidescrolloff = 8,
-  guifont = "monospace:h17", -- the font used in graphical neovim applications
+  guifont = "monospace:h17",    -- the font used in graphical neovim applications
   title = true,
 }
 
@@ -134,8 +137,9 @@ end
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 
-vim.g.netrw_banner = 0
-vim.g.netrw_mouse = 2
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_mouse = 2
+
 ```
 
 And also include a call to the options file from init.lua.
@@ -156,6 +160,14 @@ Create the file keymaps.lua with the definition of our keymaps, and load it from
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- map: Si la accion asignada tiene un mapeo se efectua de forma recursiva tambien.
+
+-- nmap:  Si la accion asignada tiene un mapeo se efectua de forma recursiva
+-- tambien pero solo en modo normal, no en visual ni insert.
+
+-- noremap: no actua de modo recursivo
+-- nnoremap: no actua de modo recursivo en modo normal
+
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -164,10 +176,10 @@ vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
 -- set spell check for spanish
-keymap("n", "<leader>s", ":setlocal spell spelllang=es<CR>", opts)
+keymap("n", "<leader>s", ":setlocal spell spelllang=es<CR>", opts )
 keymap("n", "<leader>so", ":set nospell<CR>", opts)
 
--- word suggets with require("user.options")telescope
+-- word suggets with telescope
 -- keymap("n", "z-", ":Telescope spell_suggest<CR>", opts)
 
 -- Resize with arrows
@@ -180,8 +192,8 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<Space>", "<Nop>", opts)
 
 -- hex mode and back
-keymap("n", "<Leader>x", ":%!xxd<CR>", opts)
-keymap("n", "<Leader>z", ":%!xxd -r<CR>", opts)
+-- keymap("n", "<Leader>x", ":%!xxd<CR>", opts)
+-- keymap("n", "<Leader>z", ":%!xxd -r<CR>", opts)
 
 -- better paste ( remember original copied word )
 keymap("x", "p", [["_dP]])
@@ -191,7 +203,7 @@ keymap("n", "<Leader>,", ":bprevious<CR>", opts)
 keymap("n", "<Leader>.", ":bnext<CR>", opts)
 
 -- AlternateTabs
-keymap("n", "<Leader>require("user.options");", "gT", opts)
+keymap("n", "<Leader>;", "gT", opts)
 keymap("n", "<Leader>'", "gt", opts)
 
 -- classic save shortcut
@@ -215,40 +227,28 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- for forcing the ts=2 and sw=2
-keymap("n", "sw", ":set ts=2<CR>:set sw=2<CR>", opts)
+-- keymap("n", "sw", ":set ts=2<CR>:set sw=2<CR>", opts)
 
 -- no hilight search
 keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
 
-keymap('n', '<Leader>nr', ':set rnu<CR>', opts)
-keymap('n', '<Leader>nn', ':set nornu<CR>', opts)
+-- keymap('n', '<Leader>nr', ':set rnu<CR>', opts)
+-- keymap('n', '<Leader>nn', ':set nornu<CR>', opts)
 
--- Edit Snippets
+-- Edit Snippets [CHOCA CON OIL]
 keymap("n", "-", ":lua require('luasnip.loaders').edit_snippet_files()<cr>", opts)
-
--- NvimTree
--- keymap("n", "<Leader>e", ":NvimTreeToggle<cr>", opts)
-
--- Markdown
--- keymap('n', '<Leader>m', ':MarkdownPreviewToggle<CR>', opts)
 
 -- Colorizer
 keymap('n', '<Leader>c', ':ColorizerToggle<CR>', opts)
 
--- my functions
--- keymap("n", "<Leader>cxz", ":lua clearregister()<cr>", opts)
+-- Markdown
+-- keymap('n', '<Leader>m', ':ggle<CR>', opts)
 
--- The minimap
--- keymap('n', '<Leader>mm', ':MinimapToggle<CR>', opts)
--- keymap('n', '<Leader>m', ':MinimapToggle<CR>', opts)
 
 -- sessions
 -- map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
 -- keymap('n', '<F2>', ':mksession! ~/vim_session/vim_session  <cr>', opts)
 -- keymap('n', '<F3>', ':source ~/vim_session/vim_session  <cr>', opts)
-
---vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
---vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
 ```
 
 And the respective call from the init.lua
@@ -406,8 +406,25 @@ local M = {
 }
 
 function M.config()
-  require("nvim-treesitter.configs").setup {   
-    ensure_installed = { "html", "css", "javascript", "python", "cpp", "markdown", "bash" },
+  require("nvim-treesitter.configs").setup {
+
+    -- :TSUpdate for update installed languages
+   -- :TSUpdate {language}
+
+    -- If the language is already supported by nvim-treesitter, you can install it with
+    -- :TSInstall <language_to_install>
+
+    ensure_installed = {"lua", "html", "css", "javascript", "python", "cpp", "markdown", "bash" },
+    -- ensure_installed = {"html", "css", "javascript", "python", "cpp", "markdown", "bash" },
+    -- auto_install = true, -- e.g: if i open haskell treesitter would install the respective parser
+
+    -- If i want to unistall a language
+    -- :TSUninstall {language}
+    -- :TSUninstall all
+
+    -- for inspect the tree 
+    -- :InspectTree
+
     highlight = { enable = true },
     indent = { enable = true },
   }
@@ -502,23 +519,25 @@ and files will be added. Reason why we came back to this file later.
 ```lua
 local M = {
   "folke/which-key.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  lazy = true,
 }
+
 
 function M.config()
   local which_key = require("which-key")
 
   which_key.setup {
     ---@type false | "classic" | "modern" | "helix"
-    preset = "modern",
+    preset = "classic",
     -- Delay before showing the popup. Can be a number or a function that returns a number.
     ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
-    delay = 450,
+    delay = 550,
     ---@param mapping wk.Mapping
     filter = function(mapping)
       -- example to exclude mappings without a description
-      -- return true
       return mapping.desc and mapping.desc ~= ""
+      -- return true
     end,
 
     --- You can add any mappings here, or use `require('which-key').add()` later
@@ -574,7 +593,7 @@ function M.config()
     --- * mod: special modifier keys last
     --- * manual: the order the mappings were added
     --- * case: lower-case first
-    sort = { "local", "order", "group", "alphanum", "mod", "manual" },
+    sort = { "manual", "order", "group", "alphanum", "mod", "local" },
 
     icons = {
       rules = {
@@ -595,7 +614,7 @@ function M.config()
         { plugin = "lazy.nvim", cat = "filetype", name = "lazy" },
         { plugin = "CopilotChat.nvim", icon = " ", color = "orange" },
         { pattern = "%f[%a]git", cat = "filetype", name = "git" },
-        { pattern = "terminal", icon = " ", color = "blue" },
+        { pattern = "terminal", icon = " ", color = "blue" },
         { pattern = "find", icon = " ", color = "green" },
         { pattern = "search", icon = " ", color = "blue" },
         { pattern = "test", cat = "filetype", name = "neotest-summary" },
@@ -630,14 +649,20 @@ function M.config()
 
 
   -- icon colors
-  -- azure, blue, cyan, green, grey, orange, purple, red, yellow
+  -- azure, grey, cyan, green, grey, orange, purple, red, yellow
   wk.add {
     {
-      "<leader>f",
+      "<leader>t",
       group = " Telescope",
       icon = {
         icon = "",
-        color = "blue",
+        color = "grey",
+      },
+    },
+    { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = " NvimTree",
+      icon = {
+        icon = "",
+        color = "grey",
       },
     },
     {
@@ -645,7 +670,7 @@ function M.config()
       group = " LSP",
       icon = {
         icon = " ",
-        color = "blue",
+        color = "grey",
       },
     },
     {
@@ -653,7 +678,7 @@ function M.config()
       group = " Git",
       icon = {
         icon = " ",
-        color = "blue",
+        color = "grey",
       },
     },
     {
@@ -661,16 +686,15 @@ function M.config()
       group = " Markdown",
       icon = {
         icon = " ",
-        color = "blue",
+        color = "grey",
       },
     },
-    {
-      "<leader>w",
-      "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",
-      desc = "Wrap",
-      hidden = true,
-    },
-
+    -- {
+    --   "<leader>w",
+    --   "<cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>",
+    --   desc = "Wrap",
+    --   hidden = true,
+    -- },
     {
       "<leader>p",
       group = "Plugins",
@@ -715,6 +739,7 @@ function M.config()
     "bashls",
     "clangd",
     "pyright",
+    "eslint",    -- javascript, typescript
   }
 
   require("mason").setup {
@@ -789,22 +814,17 @@ end
 function M.config()
   local wk = require("which-key")
   wk.add {
-    {
-      "<leader>l",
-      group = " LSP",
-      icon = {
-        icon = " ",
-        color = "azure",
-      },
-    },
-    {
-      "<leader>li",
-      "<cmd>LspInfo<cr>",
-      desc = " Info"
-    },
+    -- {
+    --   "<leader>l",
+    --   group = " LSP",
+    --   icon = {
+    --     icon = " ",
+    --     color = "azure",
+    --   },
+    -- },
     {
       "<leader>lr",
-      "<cmd>lua vim.lsp.buf.rename()<cr>", 
+      "<cmd>lua vim.lsp.buf.rename()<cr>",
       desc = " Rename"
     },
     {
@@ -814,13 +834,13 @@ function M.config()
     },
     {
       "lj",
-      "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+      "<cmd>lua vivm.diagnostic.goto_prev()<cr>",
       desc = " Prev Diagnostic"
     },
-    { 
+    {
       "lk",
       "<cmd>lua vim.diagnostic.goto_next()<cr>",
-      desc = " Next Diagnostic" 
+      desc = " Next Diagnostic"
     },
   }
 
@@ -828,12 +848,14 @@ function M.config()
   local icons = require "user.icons"
 
   local servers = {
-    "lua_ls",
-    "html",
-    "cssls",
-    "bashls",
-    "clangd",
-    "pyright",
+    "lua_ls",    -- lua
+    "html",      -- html
+    "cssls",     -- css
+    "bashls",    -- bash 
+    "clangd",    -- cpp 
+    "pyright",   -- python
+    "eslint",    -- javascript, typescript
+    -- "matlab_ls",
   }
 
   local default_diagnostic_config = {
@@ -1098,6 +1120,9 @@ local M = {
     {
       "hrsh7th/cmp-calc"
     },
+    -- {
+    --   "hrsh7th/cmp-nvim-lua",
+    -- },
   },
 }
 
@@ -1106,11 +1131,11 @@ function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
   require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/user/snippets/friendly-snippets/" } })
-  require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/user/snippets/snippets/" } })
+  -- require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/user/snippets/snippets/" } })
 
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 
-    local check_backspace = function()
+  local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
   end
@@ -1124,26 +1149,41 @@ function M.config()
       end,
     },
     mapping = cmp.mapping.preset.insert {
-      ["<Up>"] =  cmp.mapping {
+      -- ["<Up>"] =  cmp.mapping {
+      --   i = cmp.mapping.abort(),
+      --   c = cmp.mapping.close(),
+      -- },
+
+      -- ["<Down>"] =  cmp.mapping {
+      --   i = cmp.mapping.abort(),
+      --   c = cmp.mapping.close(),
+      -- },
+
+      -- ["<Home>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      -- ["<End>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      -- ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+      -- ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+
+      ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+
+      ["<Left>"] = cmp.mapping {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-      ["<Down>"] =  cmp.mapping {
+
+      ["<Right>"] = cmp.mapping {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-      ["<Left>"] =  cmp.mapping {
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      },
-      ["<Right>"] =  cmp.mapping {
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      },
+
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
+
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -1160,6 +1200,7 @@ function M.config()
         "i",
         "s",
       }),
+
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
@@ -1239,7 +1280,7 @@ require("user.lazy")
 ```
 
 
-### LSP without LSP, null-ls or none-ls
+### None LSP languages servers, null-ls or none-ls
 This is an attempt to reduce the gap between non-LSP sources and LSP for
 simplify the process of creating, sharing, and setting up LSP sources using
 pure Lua.
@@ -1260,14 +1301,39 @@ local M = {
 function M.config()
   local null_ls = require("null-ls")
 
+  local formatting = null_ls.builtins.formatting
+  -- local diagnostics = null_ls.builtins.diagnostics -- not used yet
 
   null_ls.setup({
     debug = false,
     sources = {
-      null_ls.builtins.formatting.prettier,
-      null_ls.builtins.formatting.black,
-      require("none-ls.diagnostics.flake8"), -- none-ls-extras.nvim is required
+
+      -- JavaScript · TypeScript · Flow · JSX · JSON
+      -- CSS · SCSS · Less
+      -- HTML · Vue · Angular
+      -- GraphQL · Markdown · YAML
+      -- null_ls.builtins.formatting.prettier,
+      formatting.prettier,
+
+      -- python
+      formatting.black,
+
+      -- Spell suggestions completion source.
+      -- local sources = { null_ls.builtins.completion.spell }
       null_ls.builtins.completion.spell,
+
+      -- python
+      require("none-ls.diagnostics.flake8"),
+
+      -- Checks commonly misspelled English words in source files.
+      -- diagnostics.misspell,
+
+      -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+
+      -- A tool for fast static analysis of C/C++ code.
+      -- local sources = { null_ls.builtins.diagnostics.cppcheck }
+      -- diagnostics.cppcheck,
+
     },
   })
 end
@@ -1313,7 +1379,6 @@ local M = {
 }
 
 function M.config()
-
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
   -- word suggets with telescope
@@ -1321,22 +1386,27 @@ function M.config()
 
   local wk = require("which-key")
   wk.add {
-    {
-      "<leader>f",
-      group = " Telescope",
+    -- {
+    --   "<leader>f",
+    --   group = " Telescope",
+    --   icon = {
+    --     icon = "",
+    --     color = "azure",
+    --   },
+    -- },
+    { "<leader>tx", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>tc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    { "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Find files",
       icon = {
-        icon = "",
+        icon = "󰈞",
         color = "azure",
       },
     },
-    { "<leader>fb", "<cmd>Telescope buffers previewer=false<cr>", desc = " Buffers" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    -- { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fj", "<cmd>Telescope jumplist previewer=false<cr>", desc = "Jumps" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-    { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
+    -- { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>tj", "<cmd>Telescope jumplist previewer=false<cr>", desc = "Jumps" },
+    { "<leader>tl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>tr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>tt", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
   }
 
   local icons = require("user.icons")
@@ -1392,21 +1462,19 @@ function M.config()
         theme = "dropdown",
         previewer = false,
       },
-
       buffers = {
         theme = "dropdown",
         previewer = false,
-        initial_mode = "normal",
-        mappings = {
-          i = {
-            ["<C-d>"] = actions.delete_buffer,
-          },
-          n = {
-            ["dd"] = actions.delete_buffer,
-          },
-        },
+        -- initial_mode = "normal",
+        -- mappings = {
+        --   i = {
+        --     ["<C-d>"] = actions.delete_buffer,
+        --   },
+        --   n = {
+        --     ["dd"] = actions.delete_buffer,
+        --   },
+        -- },
       },
-
       planets = {
         show_pluto = true,
         show_moon = true,
@@ -1438,10 +1506,10 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true, -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
     },
   })
@@ -1661,9 +1729,9 @@ A blazing fast and easy to configure Neovim statusline written in Lua.
 ```lua
 local M = {
   "nvim-lualine/lualine.nvim",
-  -- dependencies = {
---   "AndreM222/copilot-lualine",
-  -- },
+  dependencies = {
+    "AndreM222/copilot-lualine",
+  },
 }
 
 function M.config()
@@ -1674,10 +1742,10 @@ function M.config()
       ignore_focus = { "NvimTree" },
     },
     sections = {
-      lualine_a = {},
-      lualine_b = { "branch" },
+      lualine_a = {"branch"},
+      lualine_b = { },
       lualine_c = { "diagnostics" },
-      lualine_x = { "", "filetype" },
+      lualine_x = { "copilot", "filetype" },
       lualine_y = { "location" },
       lualine_z = {"progress"},
     },
@@ -1711,7 +1779,7 @@ spec("user.lualine")
 require("user.lazy")
 ```
 
-###  NAvic and breadcrumbs
+###  Navic and breadcrumbs
 
 The `~/.config/nvim/lua/user/navic.lua` file
 ```lua
@@ -1829,7 +1897,7 @@ function M.config()
       max_width = 75,
     },
   }
-  vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Oil File explorer" })
+  vim.keymap.set("n", "<leader>-", "<CMD>Oil --float<CR>", { desc = "Oil File explorer" })
 end
 
 return M

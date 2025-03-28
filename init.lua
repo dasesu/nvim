@@ -1,9 +1,8 @@
 require("user.launch")
 require("user.options")
+require("user.myoptions")
 require("user.keymaps")
 require("user.autocmds")
-
--- vim.cmd('echo "(>^.^<)"')
 
 -- Theme for neovim
 spec("user.colorscheme")
@@ -50,7 +49,7 @@ spec("user.nvimtree")
 spec("user.comment")
 
 -- Enable to set the status line
-spec("user.extras.copilot")
+-- spec("user.extras.copilot")
 
 -- Enable to set the status line
 spec("user.lualine")
@@ -98,14 +97,18 @@ spec("user.extras.markdown")
 -- live-server for html folders
 --:LiveServerStart
 --:LiveServerStop
-spec("user.extras.liveserver")
+-- spec("user.extras.liveserver")
 
 -- Improve viewing Markdown files in Neovim
 --:RenderMarkdown
 spec("user.extras.render-markdown")
 
 -- Distraction-free coding for Neovim
-spec("user.extras.zen")
+-- spec("user.extras.zen")
+
+-- This plugin enables you to effortlessly open the URL under the cursor in
+-- Neovim, bypassing the need for netrw
+spec("user.extras.urlopen")
 
 -- A Neovim note taking plugin for daily
 -- notes, task tracking and easy deep

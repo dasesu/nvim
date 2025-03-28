@@ -20,7 +20,7 @@ function M.config()
 
   require('render-markdown').setup {
     -- Whether Markdown should be rendered by default or not
-    enabled = true,
+    enabled = false,
     -- Maximum file size (in MB) that this plugin will attempt to render
     -- Any file larger than this will effectively be ignored
     max_file_size = 10.0,
@@ -202,7 +202,7 @@ function M.config()
       -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
       right_pad = 0,
       -- Minimum width to use for code blocks when width is 'block'
-      min_width = 79,
+      min_width = 80,
       -- Determins how the top / bottom of code block are rendered:
       --  thick: use the same highlight as the code body
       --  thin:  when lines are empty overlay the above & below icons

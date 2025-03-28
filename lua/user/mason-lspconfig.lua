@@ -7,13 +7,14 @@ local M = {
 
 function M.config()
   local servers = {
-    "lua_ls",
-    "html",
-    "cssls",
-    "bashls",
-    "clangd",
-    "pyright",
-  }
+    "lua_ls",    -- lua
+    "html",      -- html
+    "cssls",     -- css
+    "bashls",    -- bash 
+    "clangd",    -- cpp 
+    "pyright",   -- python
+         -- javascript, typescript
+  }              
 
   require("mason").setup {
     ui = {

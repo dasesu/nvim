@@ -50,12 +50,12 @@ function M.config()
       desc = " Format"
     },
     {
-      "lj",
+      "<leader>lj",
       "<cmd>lua vivm.diagnostic.goto_prev()<cr>",
       desc = " Prev Diagnostic"
     },
     {
-      "lk",
+      "<leader>lk",
       "<cmd>lua vim.diagnostic.goto_next()<cr>",
       desc = " Next Diagnostic"
     },
