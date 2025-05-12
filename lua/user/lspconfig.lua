@@ -72,7 +72,6 @@ function M.config()
     "clangd",    -- cpp 
     "pyright",   -- python
     "eslint",    -- javascript, typescript
-    -- "matlab_ls",
   }
 
   local default_diagnostic_config = {
@@ -100,7 +99,6 @@ function M.config()
   }
 
   vim.diagnostic.config(default_diagnostic_config)
-
   for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end

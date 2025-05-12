@@ -1,10 +1,15 @@
 local M = {
   "SmiteshP/nvim-navic",
+  dependencies = {
+    "neovim/nvim-lspconfig"
+  },
+  commit = "8649f694d3e76ee10c19255dece6411c29206a54",
 }
 
 function M.config()
   local icons = require "user.icons"
-  require("nvim-navic").setup {
+  local navic = require("nvim-navic")
+  navic.setup {
     icons = icons.kind,
     highlight = true,
     lsp = {
@@ -18,3 +23,5 @@ function M.config()
 end
 
 return M
+
+

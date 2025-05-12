@@ -49,9 +49,6 @@ spec("user.nvimtree")
 spec("user.comment")
 
 -- Enable to set the status line
--- spec("user.extras.copilot")
-
--- Enable to set the status line
 spec("user.lualine")
 
 -- Simple winbar/statusline plugin
@@ -94,6 +91,11 @@ spec("user.extras.colorizer")
 -- Preview markdown files
 spec("user.extras.markdown")
 
+
+-- This plugin enables you to effortlessly open the URL under the cursor in
+-- Neovim, bypassing the need for netrw
+spec("user.extras.urlopen")
+
 -- live-server for html folders
 --:LiveServerStart
 --:LiveServerStop
@@ -101,14 +103,11 @@ spec("user.extras.markdown")
 
 -- Improve viewing Markdown files in Neovim
 --:RenderMarkdown
-spec("user.extras.render-markdown")
+-- spec("user.extras.render-markdown")
 
 -- Distraction-free coding for Neovim
 -- spec("user.extras.zen")
 
--- This plugin enables you to effortlessly open the URL under the cursor in
--- Neovim, bypassing the need for netrw
-spec("user.extras.urlopen")
 
 -- A Neovim note taking plugin for daily
 -- notes, task tracking and easy deep

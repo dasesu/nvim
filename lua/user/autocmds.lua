@@ -5,16 +5,8 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 
 
-
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = {
-    -- "netrw",
-    -- "Jaq",
-    -- "qf",
-    -- "spectre_panel",
-    -- "lir",
-    -- "DressingSelect",
-    -- "tsplayground",
     "git",
     "help",
     "man",
@@ -50,7 +42,6 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
--- I like it
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank { higroup = "Visual", timeout = 40 }
@@ -65,6 +56,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
   callback = function()
     local status_ok, luasnip = pcall(require, "luasnip")
@@ -78,3 +70,4 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
     end
   end,
 })
+
