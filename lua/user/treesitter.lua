@@ -13,7 +13,19 @@ function M.config()
     -- If the language is already supported by nvim-treesitter, you can install it with
     -- :TSInstall <language_to_install>
 
-    ensure_installed = {"lua", "html", "css", "javascript", "python", "cpp", "markdown", "bash" },
+    ensure_installed = {
+      "lua",
+      "html",
+      "css",
+      "javascript",
+      "python",
+      "cpp",
+      "markdown",
+      "bash",
+      "vimdoc",
+      "luadoc",
+      "vim"
+    },
     -- ensure_installed = {"html", "css", "javascript", "python", "cpp", "markdown", "bash" },
     -- auto_install = true, -- e.g: if i open haskell treesitter would install the respective parser
 
@@ -24,7 +36,10 @@ function M.config()
     -- for inspect the tree 
     -- :InspectTree
 
-    highlight = { enable = true },
+    highlight = {
+      enable = true, 
+      disable = "help"
+    },
     indent = { enable = true },
   }
 end
